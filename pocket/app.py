@@ -5,14 +5,7 @@ from django.apps import apps
 from django.conf import settings
 
 
-deployment = os.getenv('ENV', 'DEBUG')
-if deployment == 'DEBUG':
-    os.environ.setdefault(
-        "DJANGO_SETTINGS_MODULE",
-        "config.development.settings"
-    )
-else:
-    raise NotImplementedError('PRODUCTION not implemented')
+from utils import configure
 
 apps.populate(settings.INSTALLED_APPS)
 

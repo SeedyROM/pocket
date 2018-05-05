@@ -11,7 +11,6 @@ DATABASES = {
     }
 }
 
-
 INSTALLED_APPS = ('services.auth',)
 
 SECRET_KEY = 'REPLACE_ME'
