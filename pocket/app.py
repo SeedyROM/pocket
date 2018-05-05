@@ -17,7 +17,6 @@ app = Flask(__name__)
 def index():
     u, c = User.objects.get_or_create(username='Mike', password='PaSsWoRd1@3')
     return f'{u.username} {c}'
-    # return 'Ass'
 
 if __name__=='__main__':
     app.run(debug=True)
