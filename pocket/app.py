@@ -1,8 +1,19 @@
+import os 
+
 from flask import Flask
 from django.apps import apps
 from django.conf import settings
 
-settings.configure(DEBUG=True)
+
+deployment = os.getenv('ENV', 'DEBUG')
+if deployment == 'DEBUG':
+    os.environ.setdefault(
+        "DJANGO_SETTINGS_MODULE",
+        "config.development.settings"
+    )
+else:
+    raise NotImplementedError('PRODUCTION not implemented')
+
 apps.populate(settings.INSTALLED_APPS)
 
 from services.auth.models import User

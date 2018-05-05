@@ -1,12 +1,16 @@
 #!/usr/bin/env python
-import os, sys
+import os
+import sys
 
 from django.conf import settings
 
 if __name__ == "__main__":
     deployment = os.getenv('ENV', 'DEBUG')
     if deployment == 'DEBUG':
-        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.development.settings")
+        os.environ.setdefault(
+            "DJANGO_SETTINGS_MODULE",
+            "config.development.settings"
+        )
     else:
         raise NotImplementedError('PRODUCTION not implemented')
 
